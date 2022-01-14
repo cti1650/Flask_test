@@ -2,13 +2,6 @@
 
 ## Flask
    
-### Flask 導入
-
-```bash
-yarn
-yarn setup
-```
-
 ### サンプル
 
 <a title="Gitpod" href="https://gitpod.io/#https://github.com/cti1650/Flask_test" target="_blank" class="btn btn-primary">Gitpodでサンプルを実行</a>
@@ -36,12 +29,6 @@ if __name__ == "__main__":
 
 ```
 gunicorn main:app --log-file=-
-```
-
-または
-
-```
-yarn serve
 ```
 
 ### requirements.txt 作成

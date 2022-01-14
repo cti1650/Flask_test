@@ -3,8 +3,8 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - init: yarn install && pip install -r requirements.txt
-    command: yarn serve
+  - init: pip install -r requirements.txt
+    command: gunicorn main:app --log-file=-
 vscode:
   extensions:
     - dbaeumer.vscode-eslint

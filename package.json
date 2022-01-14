@@ -7,7 +7,7 @@
   "scripts": {
     "setup": "pip install fastapi uvicorn[standard] && curl -fsSL https://get.deta.dev/cli.sh | sh",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "gunicorn app:app --log-file=-",
+    "serve": "gunicorn app:main --log-file=-",
     "deploy": "~/.deta/bin/deta deploy"
   },
   "repository": {

@@ -1,29 +1,8 @@
-# fastAPI_test
+# Flask_test
 
-## Python
+## Flask
 
-### Python 環境構築
-
-M1 mac の場合 必要に応じて実施
-
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
-source ~/.zprofile
-brew update
-brew install python
-```
-
-## fastAPI
-
-### fastAPI 導入
-
-```bash
-pip install fastapi
-pip install "uvicorn[standard]"
-```
-
-または
+### Flask 導入
 
 ```bash
 yarn
@@ -32,34 +11,31 @@ yarn setup
 
 ### サンプル
 
-<a title="Gitpod" href="https://gitpod.io/#https://github.com/cti1650/fastAPI_test" target="_blank" class="btn btn-primary">Gitpodでサンプルを実行</a>
+<a title="Gitpod" href="https://gitpod.io/#https://github.com/cti1650/Flask_test" target="_blank" class="btn btn-primary">Gitpodでサンプルを実行</a>
 
 #### 本番リンク
 
-[https://ues2ls.deta.dev/](https://ues2ls.deta.dev/)
+
 
 ```python
-from typing import Optional
+import os
+from flask import Flask
 
-from fastapi import FastAPI
+app = Flask(__name__, static_folder='.', static_url_path='')
 
-app = FastAPI()
+@app.route("/")
+def index():
+    return {"text": "Hello World!!"}
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(port=port, debug=True)
 ```
 
 ### サーバー立ち上げ
 
 ```
-uvicorn main:app --reload
+gunicorn main:app --log-file=-
 ```
 
 または
@@ -71,51 +47,8 @@ yarn serve
 ### requirements.txt 作成
 
 ```plane:requirements.txt
-fastapi
-```
-
-### Deta 登録
-
-[Deta Cloud](https://www.deta.sh/?ref=fastapi)
-
-### Deta CLI インストール
-
-```
-curl -fsSL https://get.deta.dev/cli.sh | sh
-```
-
-### Deta 環境変数定義
-
-```
-echo 'export PATH=~/.deta/bin:$PATH' >> ~/.bash_profile && source ~/.bash_profile
-```
-
-### Deta 動作確認
-
-```
-deta --help
-~/.deta/bin/deta --help
-```
-
-### Deta CLI Login (エラーになるため Chrome で実施要)
-
-```
-deta login
-~/.deta/bin/deta login
-```
-
-### Deta 新規連携
-
-```
-deta new
-~/.deta/bin/deta new
-```
-
-### Deta デプロイ
-
-```
-deta deploy
-~/.deta/bin/deta deploy
+Flask
+gunicorn
 ```
 
 ## 参考にしたサイト
@@ -129,3 +62,7 @@ deta deploy
 - [Python をローカルで利用できるようにする](https://zenn.dev/souq/articles/7d752c7a80c488cabd19)
 - [brew でインストールに失敗する時の対処メモ](https://zenn.dev/souq/articles/3c0591a50f39269793c9)
 - [Chrome ウェブストア - gitpod](https://chrome.google.com/webstore/search/gitpod?hl=ja)
+
+- [Dockerではなくてheroku.ymlを使ってPython2とOpenCVの環境をHeroku上に整える - 猫でもわかるWebプログラミングと副業](https://www.utakata.work/entry/20180109/1515469885)  
+- [Heroku に Flask で作った Web アプリをデプロイする | Simple is Best](https://oldbigbuddha.dev/posts/deploy-flask-app-to-heroku)  
+- [【Python】Flaskとは？FlaskでWeb開発の基礎を学ぼう！ | AI Academy Media](https://aiacademy.jp/media/?p=57)  

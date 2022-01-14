@@ -1,15 +1,12 @@
-from typing import Optional
+# -*- coding: utf-8 -*-
 
-from fastapi import FastAPI
+import os
+from flask import Flask
 
-app = FastAPI()
-
-
-@app.get("/")
-def read_root():
+@app.route("/")
+def index():
     return {"Hello": "World"}
 
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(port=port, debug=True)

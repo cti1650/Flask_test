@@ -1,5 +1,5 @@
 {
-  "name": "fastapi_test",
+  "name": "Flask_test",
   "version": "1.0.0",
   "description": "## Python",
   "main": "index.js",
@@ -7,17 +7,17 @@
   "scripts": {
     "setup": "pip install fastapi uvicorn[standard] && curl -fsSL https://get.deta.dev/cli.sh | sh",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "uvicorn main:app --reload",
+    "serve": "gunicorn app:app --log-file=-",
     "deploy": "~/.deta/bin/deta deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cti1650/fastAPI_test.git"
+    "url": "git+https://github.com/cti1650/Flask_test.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cti1650/fastAPI_test/issues"
+    "url": "https://github.com/cti1650/Flask_test/issues"
   },
-  "homepage": "https://github.com/cti1650/fastAPI_test#readme"
+  "homepage": "https://github.com/cti1650/Flask_test#readme"
 }
